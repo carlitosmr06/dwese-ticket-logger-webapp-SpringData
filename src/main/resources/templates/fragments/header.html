@@ -1,0 +1,35 @@
+<!-- header.html -->
+<header th:fragment="header" xmlns:th="http://www.thymeleaf.org">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TL - Carlos Marin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/regions}">Comunidades Autónomas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/provinces}">Provincias</a>
+                    </li>
+                </ul>
+                <!-- Selector de idioma: recarga la página actual añadiendo ?lang=es o ?lang=en
+                     (conserva el resto de parámetros, como el id al editar) y LocaleChangeInterceptor cambia el idioma -->
+                <form class="d-flex form-inline" onsubmit="return false;">
+                    <select name="lang" class="form-select"
+                            onchange="const url = new URL(window.location.href); url.searchParams.set('lang', this.value); window.location.href = url;">
+                        <option value="es" th:selected="${#locale.language == 'es'}">Español</option>
+                        <option value="en" th:selected="${#locale.language == 'en'}">English</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+

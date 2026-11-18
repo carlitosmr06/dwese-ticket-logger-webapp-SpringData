@@ -1,0 +1,16 @@
+package org.alixar.daw2.carlosmarin.dwese_ticket_logger_webapp.repositories;
+import java.util.List;
+import org.alixar.daw2.carlosmarin.dwese_ticket_logger_webapp.entities.Province;
+import org.alixar.daw2.carlosmarin.dwese_ticket_logger_webapp.entities.Region;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProvinceRepository extends JpaRepository<Province, Long> {
+    List<Province> listAllProvinces() ;
+    void insertProvince(Province province);
+    void updateProvince(Province province);
+    void deleteProvince(Long id);
+    Province getProvinceById(Long id);
+    boolean existsProvinceByCode(String code);
+    boolean existsProvinceByCodeAndNotId(String code, Long id);
+}
+
